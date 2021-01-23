@@ -64,7 +64,7 @@ def output(content):
         first = first[:len(first) - 4]
         second = data[1]
         second = second[:len(second) - 4]
-        print(first + ' and ' + second + ', Probability : ' + str(round(data[2]*100, 3)) + '%')    
+        print(first + ' and ' + second + ', Match : ' + str(round(data[2]*100, 3)) + '%')    
 
 print(Back.RED + 'High chance of Plagiarism:', end=" -> ")
 output(high)

@@ -1,6 +1,7 @@
 import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from colorama import Fore, Back, Style
 
 student_files = [doc for doc in os.listdir() if doc.endswith('.txt')]
 student_notes =[open(File).read() for File in  student_files]
@@ -25,15 +26,6 @@ def check_plagiarism():
             plagiarism_results.add(score)
     return plagiarism_results
 
-# for data in check_plagiarism():
-#     first = data[0]
-#     first = first[:len(first) - 4]
-#     second = data[1]
-#     second = second[:len(second) - 4]
-#     if data[2] > 0.5:
-#         print('\nHigh Probabilities')
-#         print(first + ' and ' + second + ', Probability : ' + str(data[2]))
-
 print('\n---------------------------------------\n')
 high = []
 mid = []
@@ -41,9 +33,10 @@ low =[]
 
 # print('All test cases : ')
 for data in check_plagiarism():
-    if data[2]*100 >= 85:
+    temp = int(data[2]*100)
+    if temp >= 85:
         high.append(data)
-    elif  data*100 in range(50, 85):
+    elif  temp in range(50, 85):
         mid.append(data)
     else:
         low.append(data)
@@ -57,49 +50,33 @@ def chances(ls):
         print('None')
     else:
         print(len(ls))
-    print('')
-
-print('High chance of Plagiarism:', end=" -> ")
-# if not high == 0:
-#     print('None')
-chances(high)
+    print(Style.RESET_ALL   + '')
 
 def output(content):
+    if not content:
+        print('None')
+    else:
+        print(Back.BLACK, len(content))
+    print(Style.RESET_ALL  + '')
+
     for data in content:
         first = data[0]
         first = first[:len(first) - 4]
         second = data[1]
         second = second[:len(second) - 4]
-        print(first + ' and ' + second + ', Probability : ' + str(data[2]))    
+        print(first + ' and ' + second + ', Probability : ' + str(round(data[2]*100, 3)) + '%')    
 
-# for data in high:
-#     first = data[0]
-#     first = first[:len(first) - 4]
-#     second = data[1]
-#     second = second[:len(second) - 4]
-#     print(first + ' and ' + second + ', Probability : ' + str(data[2]))
-    
+print(Back.RED + 'High chance of Plagiarism:', end=" -> ")
 output(high)
 
 print('---------------------------------------\n')
-print('Medium chance of Plagiarism:', end=" -> ")
-chances(mid)
+print(Back.YELLOW + 'Medium chance of Plagiarism:', end=" -> ")
 
-# for data in mid:
-#     first = data[0]
-#     first = first[:len(first) - 4]
-#     second = data[1]
-#     second = second[:len(second) - 4]
-#     print(first + ' and ' + second + ', Probability : ' + str(data[2]))
 output(mid)
+
 print('---------------------------------------\n')
-print('Low chance of Plagiarism:', end=" -> ")
-chances(low)
-# for data in low:
-#     first = data[0]
-#     first = first[:len(first) - 4]
-#     second = data[1]
-#     second = second[:len(second) - 4]
-#     print(first + ' and ' + second + ', Probability : ' + str(data[2]))
+print(Back.GREEN + 'Low chance of Plagiarism:', end=" -> ")
+
 output(low)
 print('')
+os.system('Pause')

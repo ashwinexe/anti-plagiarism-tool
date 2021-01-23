@@ -8,7 +8,7 @@ A-Plagiarsm Tool is a simple python script which permutes over text submissions 
 <pre>python main.py</pre>
 
 ### Installation
-Supported Python version : 3
+Supported Python version : 3.x
 
 ### Python Libraries Required
 - sklearn <pre>pip install -U scikit-learn</pre>

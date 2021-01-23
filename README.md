@@ -14,4 +14,4 @@ Supported Python version : 3.x
 
 ### Python Libraries Required
 - sklearn <pre>pip install -U scikit-learn</pre>
-- colorama <pre>pip install colorama</pre>
+- colorama (only for colors) <pre>pip install colorama</pre>

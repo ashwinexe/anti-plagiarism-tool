@@ -1,6 +1,7 @@
 <h1>Anti-Plagiarism Tool</h1>
 <p>A-Plagiarsm Tool is a simple python script which permutes over text submissions and gives the match over 3 Different levels of possible plagiarism among submissions</p>
 
+### Output
 <p><img src="sample_output.jpg"></p>
 
 ### Requiremens

@@ -34,9 +34,9 @@ low =[]
 # print('All test cases : ')
 for data in check_plagiarism():
     temp = int(data[2]*100)
-    if temp >= 85:
+    if temp >= 70:
         high.append(data)
-    elif  temp in range(50, 85):
+    elif  temp in range(40, 70):
         mid.append(data)
     else:
         low.append(data)
@@ -44,13 +44,6 @@ for data in check_plagiarism():
 high.sort(key  = lambda x : x[2], reverse=True)
 mid.sort(key  = lambda x : x[2], reverse=True)
 low.sort(key  = lambda x : x[2], reverse=True)
-
-def chances(ls):
-    if not ls:
-        print('None')
-    else:
-        print(len(ls))
-    print(Style.RESET_ALL   + '')
 
 def output(content):
     if not content:
